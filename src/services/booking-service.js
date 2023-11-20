@@ -1,10 +1,21 @@
+const axios = require('axios');
+const db = require('../models');
+const { FLIGHT_SERVICE } = require('../config/server-config')
+
 class BookingService{
 
-    async executeBussinessLogic(){
-        console.log("Bussiness logic executed successfuly");
-        console.log("passing request to repository for db operation");
-        console.log("Got response from db");
-        return "Successfully executed all the operations and the entire workflow is completed";
+    async createBooking(data){
+        try {
+            const result = await db.sequelize.transaction(async() => {
+                const flight = await axios.get(FLIGHT_SERVICE + `/api/v1/flights/${data.flightId}`);
+                console.log(flight);
+                return true;
+            });
+            return result;    
+        } catch (error) {
+            
+        }
+        
     }
 
 }

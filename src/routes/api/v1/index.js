@@ -3,6 +3,6 @@ const router = express.Router();
 
 const bookingRoute = require('./booking');
 
-router.use('/booking', bookingRoute);
+router.use('/bookings', bookingRoute);
 
 module.exports = router;

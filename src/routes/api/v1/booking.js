@@ -7,6 +7,6 @@ const { BookingController } = require('../../../controllers');
 const bookingMiddleware = new BookingMiddleware();
 const bookingController = new BookingController();
 
-router.get('/', bookingMiddleware.validateGetRequest, bookingController.passRequestToService);
+router.post('/', bookingMiddleware.validateCreateBookingRequest, bookingController.createBooking);
 
 module.exports = router;
