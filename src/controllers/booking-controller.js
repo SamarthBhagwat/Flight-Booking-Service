@@ -10,10 +10,13 @@ class BookingController{
         try {
             const data = {};
             data.flightId = req.body.flightId;
+            data.userId = req.body.userId;
+            data.noOfSeats = req.body.noOfSeats;
             const response = await bookingService.createBooking(data);
-            console.log(response);
-            SuccessResponse.data = response;
-            res.status(StatusCodes.OK).send(SuccessResponse);
+            res.status(StatusCodes.OK).send(response);
+            // console.log(response);
+            // SuccessResponse.data = response;
+            // res.status(StatusCodes.OK).send(SuccessResponse);
         } catch (error) {
             console.log(error);
             ErrorResponse.error = error;
