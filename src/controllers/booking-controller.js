@@ -20,7 +20,10 @@ class BookingController{
         } catch (error) {
             console.log(error);
             ErrorResponse.error = error;
-            res.status(error.statusCode).send(ErrorResponse);
+            if(error.statusCode){
+                res.status(error.statusCode).send(ErrorResponse);
+            }
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ErrorResponse);
         }
         
     }

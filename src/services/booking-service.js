@@ -14,7 +14,16 @@ class BookingService{
                 if(data.noOfSeats > flightData.totalSeats){
                     throw new AppError("Not enough seats available", StatusCodes.BAD_REQUEST);
                 }
-                return flight.data;
+
+                const totalBillingAmount = flightData.price * data.noOfSeats;
+                console.log(totalBillingAmount);
+
+                const response = await axios.patch(FLIGHT_SERVICE + `/api/v1/flights/${data.flightId}/seats` , {
+                    'seats': data.noOfSeats
+                });
+
+                console.log(response.data);
+                return response.data;
             });
             return result;    
         } catch (error) {
