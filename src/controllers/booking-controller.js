@@ -29,6 +29,28 @@ class BookingController{
         
     }
     
+    async makePayment(req, res){
+        try {
+            const data = {};
+            data.bookingId = req.body.bookingId;
+            data.userId = req.body.userId;
+            data.totalCost = req.body.totalCost;
+            const response = await bookingService.makePayment(data);
+            console.log(response);
+            SuccessResponse.data = response;
+            res.status(StatusCodes.OK).send(SuccessResponse);
+        } catch (error) {
+            console.log(error);
+            ErrorResponse.error = error;
+            if(error.statusCode){
+                res.status(error.statusCode).send(ErrorResponse);
+            }
+            else{
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ErrorResponse);
+            }
+        }
+        
+    }
 }
 
 

@@ -1,5 +1,5 @@
 'use strict';
-const { BOOKING_STATUS } = require('../utils/enum/enum');
+const { BOOKING_STATUS } = require('../utils/common/enum');
 const { BOOKED, PENDING, INITIATED, CANCELLED} = BOOKING_STATUS;
 const {
   Model

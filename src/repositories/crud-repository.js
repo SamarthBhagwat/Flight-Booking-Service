@@ -13,7 +13,7 @@ class BasicCRUDRepository{
         return response;
     }
 
-    async findById(id){
+    async findByPk(id){
         const response = await this.model.findByPk(id);
         return response;
     }

@@ -9,4 +9,6 @@ const bookingController = new BookingController();
 
 router.post('/', bookingMiddleware.validateCreateBookingRequest, bookingController.createBooking);
 
+router.post('/payments', bookingController.makePayment);
+
 module.exports = router;
