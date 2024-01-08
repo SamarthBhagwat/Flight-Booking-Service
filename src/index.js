@@ -1,5 +1,6 @@
 const express = require('express');
 const {PORT} = require('./config/server-config');
+const { scheduleCrons } = require('./utils/common/cron-jobs')
 
 const app = express();
 
@@ -13,4 +14,6 @@ app.use('/', routes);
 
 app.listen(PORT, function(){
     console.log("Server is up and running ..");
+
+    scheduleCrons();
 });

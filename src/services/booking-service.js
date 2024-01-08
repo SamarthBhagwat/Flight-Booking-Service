@@ -115,6 +115,17 @@ class BookingService{
         }
         
     }
+
+    async cancelOldBookings(){
+        try {
+            const time = new Date(Date.now() - 1000 * 300); // Time 5 min ago
+            const response = await bookingRepository.cancelOldBookings(time);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 module.exports = BookingService;
